@@ -15,12 +15,26 @@ body {
 }
 
 .App {
-  padding: 20px;
+  padding: 40px 20px;
+  background-color: var(--soft-pink);
+  min-height: 100vh;
+  /* This creates a flex container that centers its children horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+form {
+  width: 100%;
+  /* Max-width ensures it doesn't stretch too thin on large screens */
+  max-width: 1200px; 
+  /* margin: 0 auto is the classic way to center a block element */
+  margin: 0 auto;
 }
 
 header {
   text-align: center;
-  color: var(--dark-pink);
+  width: 100%;
   margin-bottom: 30px;
 }
 
