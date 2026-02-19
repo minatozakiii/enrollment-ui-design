@@ -11,28 +11,38 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* THE CENTERING MAGIC */
 .App {
-  padding: 40px 20px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Horizontally centers all children */
+  align-items: center; /* Pulls everything to the horizontal center */
+  justify-content: flex-start;
+  padding: 40px 20px;
   min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 header {
   text-align: center;
-  width: 100%;
   margin-bottom: 40px;
-}
-
-header h1, header h2 {
-  color: var(--dark-pink);
+  width: 100%;
 }
 
 form {
-  width: 98%;
-  max-width: 1400px; /* Expands to fill the screen professionaly */
-  margin: 0 auto; /* Backup centering */
+  /* This prevents the form from stretching to the edges */
+  width: 90%; 
+  max-width: 1200px; 
+  /* This ensures the form block itself sits in the middle of .App */
+  margin: 0 auto; 
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 fieldset {
@@ -47,15 +57,9 @@ fieldset {
 legend {
   background-color: var(--main-pink);
   color: white;
-  padding: 8px 25px;
+  padding: 5px 25px;
   border-radius: 20px;
   font-weight: bold;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Phase 3: Grid System */
-  gap: 20px;
 }
 
 label {
@@ -63,57 +67,17 @@ label {
   flex-direction: column;
   font-weight: 600;
   color: #333;
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-}
-
-/* Error indicator: Red Asterisk */
-.required::after {
-  content: " *";
-  color: #d32f2f;
 }
 
 input, select {
-  padding: 12px;
+  padding: 10px;
   margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  transition: all 0.3s ease;
 }
 
-/* Phase 3: Visual Feedback on Focus */
-input:focus, select:focus {
-  outline: none;
-  border: 2px solid var(--main-pink);
-  box-shadow: 0 0 10px rgba(240, 98, 146, 0.3);
-}
-
-.radio-group {
-  margin-bottom: 20px;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.submit-btn {
-  display: block;
-  width: 300px;
-  margin: 40px auto;
-  padding: 15px;
-  background-color: var(--dark-pink);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.submit-btn:hover {
-  background-color: var(--main-pink);
-}
-
-/* Phase 3: Responsiveness */
-@media (max-width: 1100px) {
+/* Responsiveness */
+@media (max-width: 1000px) {
   .grid-container { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
