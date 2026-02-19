@@ -7,14 +7,12 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Student Enrollment Form Submitted Successfully!");
+    alert("Enrollment Form Submitted Successfully!");
   };
 
-  // Helper to block numeric input
+  // Logic to block numbers in name fields
   const blockNumbers = (e) => {
-    if (/[0-9]/.test(e.key)) {
-      e.preventDefault();
-    }
+    if (/[0-9]/.test(e.key)) e.preventDefault();
   };
 
   return (
@@ -30,7 +28,7 @@ function App() {
           <legend>Personal Information</legend>
           <div className="grid-container">
             <label className="required">First Name 
-              <input type="text" required onKeyPress={blockNumbers} pattern="[A-Za-z\s]+" title="Numbers are not allowed" />
+              <input type="text" required onKeyPress={blockNumbers} pattern="[A-Za-z\s]+" />
             </label>
             <label>Middle Name (Optional) 
               <input type="text" onKeyPress={blockNumbers} pattern="[A-Za-z\s]+" />
@@ -39,7 +37,7 @@ function App() {
               <input type="text" required onKeyPress={blockNumbers} pattern="[A-Za-z\s]+" />
             </label>
             <label>Suffix (Optional) 
-              <input type="text" placeholder="e.g., Junior" onKeyPress={blockNumbers} />
+              <input type="text" onKeyPress={blockNumbers} placeholder="e.g., Junior" />
             </label>
             <label className="required">Date of Birth 
               <input type="date" onKeyDown={(e) => e.preventDefault()} required />
@@ -53,10 +51,7 @@ function App() {
               </select>
             </label>
             <label className="required">Nationality 
-              <select required>
-                <option value="filipino">Filipino</option>
-                <option value="other">Other</option>
-              </select>
+              <select required><option value="filipino">Filipino</option><option value="other">Other</option></select>
             </label>
             <label className="required">Religion <input type="text" required /></label>
           </div>
@@ -85,18 +80,16 @@ function App() {
             <label className="required">Grade School Year Graduated 
               <input type="number" min="1900" max="2026" required />
             </label>
-            <label className="required">Grade School Address <input type="text" required /></label>
             <label className="required">Junior High School Name <input type="text" required /></label>
             <label className="required">Junior High School Year Graduated 
               <input type="number" min="1900" max="2026" required />
             </label>
-            <label className="required">Junior High School Address <input type="text" required /></label>
             <label className="required">Senior High School Name <input type="text" required /></label>
             <label className="required">Senior High School Year Graduated 
               <input type="number" min="1900" max="2026" required />
             </label>
             <label className="required">Grade Point Average <input type="number" step="0.01" required /></label>
-            <label className="required">Senior High School Address <input type="text" required /></label>
+            <label className="required">Full Home Address <input type="text" required /></label>
           </div>
         </fieldset>
 
@@ -123,15 +116,10 @@ function App() {
                   <>
                     <option value="CEA">College of Engineering and Architecture</option>
                     <option value="CCS">College of Computer Studies</option>
-                    <option value="CBE">College of Business Education</option>
-                    <option value="CAS">College of Arts and Sciences</option>
                   </>
                 )}
                 {academicLevel === "Graduate" && (
-                  <>
-                    <option value="DOC">Doctorate Degrees</option>
-                    <option value="MA">Master's Degrees</option>
-                  </>
+                  <option value="DOC">Doctorate Degrees</option>
                 )}
               </select>
             </label>
@@ -141,24 +129,14 @@ function App() {
                 <option value="">--Select Program--</option>
                 {department === "CEA" && (
                   <>
-                    <option>Bachelor of Science in Architecture</option>
                     <option>Bachelor of Science in Civil Engineering</option>
                     <option>Bachelor of Science in Computer Engineering</option>
-                    <option>Bachelor of Science in Electrical Engineering</option>
-                    <option>Bachelor of Science in Mechanical Engineering</option>
                   </>
                 )}
                 {department === "CCS" && (
                   <>
                     <option>Bachelor of Science in Computer Science</option>
                     <option>Bachelor of Science in Information Technology</option>
-                    <option>Bachelor of Science in Data Science and Analytics</option>
-                  </>
-                )}
-                {department === "DOC" && (
-                  <>
-                    <option>Doctor in Information Technology</option>
-                    <option>Doctor of Philosophy in Computer Science</option>
                   </>
                 )}
               </select>
